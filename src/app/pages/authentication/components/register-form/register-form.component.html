@@ -1,0 +1,27 @@
+<div class="register">
+  <form class="register__form" [formGroup]="form">
+    <p>Email</p>
+    <input formControlName="email" type="email" name="Email" id="email" />
+    <p>Password</p>
+    <input formControlName="password" type="password" name="Password" />
+    <p>Confirm password</p>
+    <input
+      formControlName="confirmedPassword"
+      type="password"
+      name="confirmedPassword"
+    />
+  </form>
+  
+  <div class="register__actions flex-column">
+    @if(!loading()) {
+      <button type="button" [disabled]="!form.valid" (click)="register()">
+        Register
+      </button>
+      <button type="button" (click)="login()">
+        Log In
+      </button>
+    } @else {
+      Loading...
+    }
+  </div>
+</div>
