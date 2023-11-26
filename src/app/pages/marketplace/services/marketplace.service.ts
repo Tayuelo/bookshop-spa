@@ -1,6 +1,6 @@
 import { Injectable, inject } from "@angular/core";
-import { DataService } from "../../../services/data.service";
-import { IBook } from "../../../models/books.model";
+import { IBook } from "@bs-shared/models";
+import { DataService } from "@bs-shared/services";
 
 @Injectable({
     providedIn: 'root'

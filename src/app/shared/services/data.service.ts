@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IDataService } from '../interfaces/data-interface';
+import { IDataService } from '@bs-shared/interfaces';
 
 type Options = {
   headers: HttpHeaders,

@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IBook } from '@bs-shared/models';
+import { CardComponent } from '@bs-shared/components';
 
 @Component({
   selector: 'bs-grid',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './grid.component.html',
-  styleUrl: './grid.component.scss'
+  styleUrl: './grid.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GridComponent {
-
+  @Input ({ required: true }) books!: IBook[];
 }

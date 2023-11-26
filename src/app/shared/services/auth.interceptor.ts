@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { EMPTY, Observable, catchError, throwError } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService } from '@bs-shared/services';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (!this.authService.accessToken())
+    if (!window.localStorage.getItem('accessToken')) {
       return next.handle(req.clone()).pipe(
         catchError((error: HttpErrorResponse) => {
           const handling = this.handleError(error, req, next);
@@ -30,11 +30,12 @@ export class AuthorizationInterceptor implements HttpInterceptor {
           }
         })
       );
+    }
 
     const clonedRequest = req.clone({
       headers: req.headers.set(
         'Authorization',
-        `${this.authService.accessToken()}`
+        `Bearer ${window.localStorage.getItem('accessToken')}`
       ),
     });
 

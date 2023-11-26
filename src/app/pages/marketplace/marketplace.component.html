@@ -1,8 +1,9 @@
 <div class="marketplace">
-    <header class="marketplace__header">
-        WELCOME TO YOUR BOOKSHOP
-    </header>
+  <header class="marketplace__header">WELCOME TO YOUR BOOKSHOP</header>
 
-    @if (books$ | async; as books) {}
-
+  @if (books$ | async; as books) {
+  <bs-grid [books]="books"></bs-grid>
+  } @else {
+    No books found
+  }
 </div>

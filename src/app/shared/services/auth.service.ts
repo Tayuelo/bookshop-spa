@@ -13,26 +13,10 @@ export class AuthService {
   private dataService = inject(DataService);
   private router = inject(Router);
 
-  public accessToken = signal<string | null>(null);
-  public refreshToken = signal<string | null>(null);
-
   public loading = signal(false);
   public authError = signal<string | null>(null);
 
   public shouldRegister = signal(false);
-
-  constructor() {
-    effect(() => {
-      window.localStorage.setItem(
-        'accessToken',
-        `${this.accessToken() ? `Bearer ${this.accessToken()}` : ''}`
-      );
-      window.localStorage.setItem(
-        'refreshToken',
-        `${this.refreshToken() ? `Bearer ${this.refreshToken()}` : ''}`
-      );
-    });
-  }
 
   login(payload: any): void {
     this.loading.set(true);
@@ -44,8 +28,8 @@ export class AuthService {
       .pipe(catchError(this.handleError.bind(this)), take(1))
       .subscribe((res) => {
         this.loading.set(false);
-        this.accessToken.set(res.accessToken);
-        this.refreshToken.set(res.refreshToken);
+        window.localStorage.setItem('accessToken', `${ res.accessToken }`)
+        window.localStorage.setItem('refreshToken', `${ res.refreshToken }`)
         this.router.navigateByUrl('/marketplace');
       });
   }
@@ -62,8 +46,8 @@ export class AuthService {
   }
 
   logout() {
-    this.accessToken.set(null);
-    this.refreshToken.set(null);
+    window.localStorage.setItem('accessToken', '');
+    window.localStorage.setItem('refreshToken', '');
     this.router.navigateByUrl('/authentication');
   }
 
