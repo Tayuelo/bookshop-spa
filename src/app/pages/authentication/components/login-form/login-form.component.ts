@@ -8,7 +8,7 @@ import { AuthService } from '@bs-shared/services';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.scss'
+  styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
 

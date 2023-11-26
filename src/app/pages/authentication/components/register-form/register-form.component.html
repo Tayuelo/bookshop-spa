@@ -1,27 +1,95 @@
-<div class="register">
-  <form class="register__form" [formGroup]="form">
-    <p>Email</p>
-    <input formControlName="email" type="email" name="Email" id="email" />
-    <p>Password</p>
-    <input formControlName="password" type="password" name="Password" />
-    <p>Confirm password</p>
-    <input
-      formControlName="confirmedPassword"
-      type="password"
-      name="confirmedPassword"
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <img
+      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+      alt="Bookshop"
+      class="mx-auto h-10 w-auto"
     />
-  </form>
-  
-  <div class="register__actions flex-column">
-    @if(!loading()) {
-      <button type="button" [disabled]="!form.valid" (click)="register()">
-        Register
-      </button>
-      <button type="button" (click)="login()">
-        Log In
-      </button>
-    } @else {
-      Loading...
-    }
+    <h2
+      class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+    >
+      Create a new account
+    </h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form class="space-y-6" [formGroup]="form">
+      <div>
+        <label
+          for="email"
+          class="block text-sm font-medium leading-6 text-gray-900"
+          >Email address</label
+        >
+        <div class="mt-2">
+          <input
+            formControlName="email"
+            id="email"
+            name="email"
+            type="email"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between">
+          <label
+            for="password"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Password</label
+          >
+        </div>
+        <div class="mt-2">
+          <input
+            formControlName="password"
+            id="password"
+            name="password"
+            type="password"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between">
+          <label
+            for="confirmedPassword"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Confirm password</label
+          >
+        </div>
+        <div class="mt-2">
+          <input
+            formControlName="confirmedPassword"
+            id="confirmedPassword"
+            name="confirmedPassword"
+            type="password"
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button
+          [disabled]="!form.valid"
+          (click)="register()"
+          type="submit"
+          class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-gray-500"
+        >
+          <div
+            *ngIf="loading()"
+            class="animate-spin h-5 w-5 mr-3 border-4 border-indigo-400 border-t-indigo-200 rounded-full"
+          ></div>
+          Sign up
+        </button>
+      </div>
+    </form>
+    <p class="mt-10 text-center text-sm text-gray-500">
+      Already have an account?
+      <span
+        class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer"
+        (click)="login()"
+        >Log in</span
+      >
+    </p>
   </div>
 </div>

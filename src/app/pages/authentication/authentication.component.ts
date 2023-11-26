@@ -9,7 +9,7 @@ import { AuthService } from '@bs-shared/services';
   standalone: true,
   imports: [CommonModule, LoginFormComponent, RegisterFormComponent],
   templateUrl: './authentication.component.html',
-  styleUrl: './authentication.component.scss'
+  styleUrl: './authentication.component.css'
 })
 export class AuthenticationComponent {
 

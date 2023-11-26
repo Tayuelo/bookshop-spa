@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 import { MarketplaceService } from './services/marketplace.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
@@ -12,7 +11,7 @@ import { AuthorizationInterceptor } from '@bs-shared/services';
   standalone: true,
   imports: [CommonModule, GridComponent],
   templateUrl: './marketplace.component.html',
-  styleUrl: './marketplace.component.scss',
+  styleUrl: './marketplace.component.css',
   providers: [
     MarketplaceService,
     {

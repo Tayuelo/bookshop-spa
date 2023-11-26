@@ -8,7 +8,7 @@ import { CardComponent } from '@bs-shared/components';
   standalone: true,
   imports: [CommonModule, CardComponent],
   templateUrl: './grid.component.html',
-  styleUrl: './grid.component.scss',
+  styleUrl: './grid.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GridComponent {

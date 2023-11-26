@@ -9,7 +9,7 @@ import { AuthService } from '@bs-shared/services';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './register-form.component.html',
-  styleUrl: './register-form.component.scss'
+  styleUrl: './register-form.component.css'
 })
 export class RegisterFormComponent {
 
