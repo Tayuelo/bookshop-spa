@@ -1,7 +1,9 @@
-<bs-header></bs-header>
-
-@if (books$ | async; as books) {
-  <bs-grid [books]="books"></bs-grid>
-} @else {
-  Insert empty state here
-}
+<div class="marketplace h-full overflow-auto">
+  <bs-header></bs-header>
+  
+  @if (books$ | async; as books) {
+    <bs-grid [books]="books"></bs-grid>
+  } @else {
+    Insert empty state here
+  }
+</div>
