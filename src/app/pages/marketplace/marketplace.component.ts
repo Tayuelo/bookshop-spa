@@ -5,11 +5,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 import { GridComponent } from './components/grid/grid.component';
 import { AuthorizationInterceptor } from '@bs-shared/services';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-marketplace',
   standalone: true,
-  imports: [CommonModule, GridComponent],
+  imports: [CommonModule, GridComponent, HeaderComponent],
   templateUrl: './marketplace.component.html',
   styleUrl: './marketplace.component.css',
   providers: [
