@@ -18,4 +18,9 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'marketplace',
   },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'authentication'
+  }
 ];
