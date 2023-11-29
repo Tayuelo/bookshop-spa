@@ -1,5 +1,5 @@
 <div
-  class="relative transform overflow-hidden rounded-lg text-left shadow-md transition-all cursor-pointer min-h-60 min-w-60"
+  class="relative transform overflow-hidden rounded-lg text-left shadow-md transition-all cursor-pointer min-h-60 min-w-60 h-full"
   (click)="selectItem()"
 >
   <div class=" px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
@@ -13,7 +13,7 @@
           class="text-base font-semibold leading-6 text-gray-900"
           id="modal-title"
         >
-          Hábitos atómicos
+          {{ data.name }}
         </h3>
         <p class="text-sm text-gray-500">
           {{ data.author }}
