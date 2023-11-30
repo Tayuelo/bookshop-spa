@@ -14,6 +14,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'book/:id',
+    loadComponent: () =>
+      import('./pages/marketplace/components/book/book.component').then(
+        (c) => c.BookComponent
+      ),
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'marketplace',
@@ -21,6 +28,6 @@ export const routes: Routes = [
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: 'authentication'
-  }
+    redirectTo: 'authentication',
+  },
 ];

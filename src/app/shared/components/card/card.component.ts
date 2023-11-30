@@ -15,7 +15,6 @@ export class CardComponent {
 
   #router = inject(Router);
 
-
   selectItem() {
     this.#router.navigateByUrl(`/book/${this.data._id}`);
   }
