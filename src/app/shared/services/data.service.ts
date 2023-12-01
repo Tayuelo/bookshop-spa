@@ -3,9 +3,9 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IDataService } from '@bs-shared/interfaces';
 
-type Options = {
-  headers: HttpHeaders,
-  params: any
+export type Options = {
+  headers?: HttpHeaders,
+  params?: any
 }
 
 @Injectable({
@@ -14,8 +14,8 @@ type Options = {
 export class DataService implements IDataService {
   private http = inject(HttpClient);
 
-  public get<T>(url: string): Observable<T> {
-    return this.http.get<T>(url);
+  public get<T>(url: string, options?: Options): Observable<T> {
+    return this.http.get<T>(url, options);
   }
 
   public post<T>(url: string, payload: any, options?: Options): Observable<T> {
