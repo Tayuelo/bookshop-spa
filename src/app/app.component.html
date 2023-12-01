@@ -1,5 +1,5 @@
-<div class="h-full overflow-hidden">
-    <bs-navigation></bs-navigation>
+<div class="h-full">
+    <bs-navigation *ngIf="authService.currentUserSig()"></bs-navigation>
     <div class="app-content h-full">
         <router-outlet></router-outlet>
     </div>

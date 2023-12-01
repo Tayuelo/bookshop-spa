@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './pages/marketplace/components/header/header.component';
@@ -12,12 +12,10 @@ import { AuthService } from './shared/services/auth.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit {
   authService = inject(AuthService);
 
-  
-
-
-
+  ngOnInit(): void {
+    this.authService.fetchUser();
+  }
 }

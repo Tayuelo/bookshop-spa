@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from '../navigation/navigation.component';
+import { AuthService } from '@bs-shared/services';
 
 @Component({
   selector: 'bs-header',
@@ -10,5 +11,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+
+  authService = inject(AuthService);
 
 }
