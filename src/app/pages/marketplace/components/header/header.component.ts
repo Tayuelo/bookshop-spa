@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { AuthService } from '@bs-shared/services';
 import { InputComponent, InputType } from '@bs-shared/components';
-import { FormControl } from '@angular/forms';
+import { MarketplaceService } from '../../services/marketplace.service';
 
 @Component({
   selector: 'bs-header',
@@ -17,4 +17,9 @@ export class HeaderComponent {
   public InputType = InputType;
 
   authService = inject(AuthService);
+  marketplaceService = inject(MarketplaceService);
+
+  searchBooks(searchCriteria: string) {
+    this.marketplaceService.setSearchCriteria(searchCriteria);
+  }
 }

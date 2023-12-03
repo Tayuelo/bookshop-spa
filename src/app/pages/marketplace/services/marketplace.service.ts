@@ -11,21 +11,23 @@ export class MarketplaceService {
 
     private dataService = inject(DataService);
 
-    // TODO: IMPLEMENT SEARCH
-    private searchCriteria = new BehaviorSubject<any>('Austin');
-    public searchCriteria$ = this.searchCriteria.asObservable();
+    #searchCriteria = new BehaviorSubject<string>('');
 
-    public books$ = this.searchCriteria.pipe(
+    public books$ = this.#searchCriteria.pipe(
         mergeMap((search) => {
             let options: any = {};
 
             if (search) {
                 options.params = {
-                    search: search
+                    search
                 };
             }
 
             return this.dataService.get<IBook[]>(`${this.url}/books`, options);
         })
     );
+
+    public setSearchCriteria(value: string) {
+        this.#searchCriteria.next(value);
+    }
 }

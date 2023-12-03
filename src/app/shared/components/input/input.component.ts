@@ -1,23 +1,30 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  forwardRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ControlValueAccessor,
-  FormsModule,
+  FormControl,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 export enum InputType {
   EMAIL = 'email',
   PASSWORD = 'password',
-  TEXT = 'text',
-  SEARCH = 'search',
+  TEXT = 'text'
 }
 
 @Component({
   selector: 'bs-input',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css',
   providers: [
@@ -28,18 +35,34 @@ export enum InputType {
     },
   ],
 })
-export class InputComponent implements ControlValueAccessor {
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) name!: string;
+export class InputComponent implements OnInit, ControlValueAccessor {
+  @Input() id = '';
+  @Input() name = '';
   @Input({ required: true }) type!: InputType;
-  @Input() placeholder!: string;
+  @Input() placeholder = '';
+  @Input() delay = 0;
+
+  @Output() textEvent = new EventEmitter();
+
+  inputText = new FormControl('');
+
+  public InputType = InputType;
 
   text = '';
   touched = false;
   disabled = false;
 
-  updateText(text: string) {
-    this.text = text;
+  ngOnInit(): void {
+    this.inputText.valueChanges
+      .pipe(debounceTime(this.delay))
+      .subscribe((value) => {
+        this.textEvent.emit(value);
+      });
+  }
+
+  updateText(event: any) {
+    const inputValue = event.target.value;
+    this.text = inputValue;
     this.onChange(this.text);
   }
 
