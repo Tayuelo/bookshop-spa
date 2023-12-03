@@ -16,7 +16,7 @@ export const routes: Routes = [
   {
     path: 'book/:id',
     loadComponent: () =>
-      import('./pages/marketplace/components/book/book.component').then(
+      import('./pages//book/book.component').then(
         (c) => c.BookComponent
       ),
   },
