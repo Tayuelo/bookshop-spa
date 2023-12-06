@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
+import { BooksService } from '@bs-shared/services';
 
 @Component({
   selector: 'bs-book',
@@ -11,11 +11,13 @@ import { Observable } from 'rxjs';
 })
 export class BookComponent implements OnInit {
 
-  @Input() id = '';
+  @Input('id') id = '';
 
+  public booksService = inject(BooksService);
 
-  // TODO: IMPLEMENT BOOK RETRIEVING
-  book$ = new Observable();
+  public book$ = this.booksService.book$;
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.booksService.bookSelected.next(this.id);
+  }
 }
