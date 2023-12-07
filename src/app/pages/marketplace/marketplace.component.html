@@ -1,9 +1,26 @@
-<div class="marketplace h-full">
-  <bs-header></bs-header>
+<div class="marketplace">
+  <bs-header>
+    <div class="flex flex-col justify-center items-center h-full">
+      <h1
+        class="text-2xl font-serif text-white sm:text-2xl md:text-4xl lg:text-6xl"
+      >
+        BOOKSHOP
+      </h1>
   
+      <div class="relative w-60 mt-3">
+        <bs-input
+          [id]="'search'"
+          [name]="'search'"
+          [type]="InputType.TEXT"
+          placeholder="Search a book"
+          (textEvent)="searchBooks($event)"
+          [delay]="2000"
+        ></bs-input>
+      </div>
+    </div>
+  </bs-header>
+
   @if (books$ | async; as books) {
-    <bs-grid [books]="books"></bs-grid>
-  } @else {
-    Insert empty state here
-  }
+  <bs-grid [books]="books"></bs-grid>
+  } @else { Insert empty state here }
 </div>

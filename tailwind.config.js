@@ -21,6 +21,10 @@ module.exports = {
     maxWidth: {
       '60': '15rem',
       'sm': '24rem'
+    },
+    flexGrow: {
+      '2': '2',
+      '3': '3'
     }
   },
   plugins: [

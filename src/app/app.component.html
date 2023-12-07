@@ -1,6 +1,7 @@
-<div class="h-full">
+<div class="relative h-full">
     <bs-navigation *ngIf="authService.currentUserSig()"></bs-navigation>
-    <div class="app-content h-full">
+    <div class="app-content">
         <router-outlet></router-outlet>
     </div>
+    <bs-footer *ngIf="authService.currentUserSig()"></bs-footer>
 </div>

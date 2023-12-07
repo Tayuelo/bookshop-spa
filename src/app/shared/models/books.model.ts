@@ -6,6 +6,7 @@ interface IBook {
     price: number;
     pages: number;
     publishingDate: string;
+    photo: string;
 }
 
 export {
